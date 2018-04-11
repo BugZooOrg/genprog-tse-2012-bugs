@@ -18,8 +18,9 @@ bugs:
       context: /experiment/source
       command: gcc zune.c -o zune
       command_with_instrumentation: gcc zune.c -o zune --coverage
-      # instrument:
-      #   - atris_comb.c
+    coverage:
+      files-to-instrument:
+        - zune.c
     test-harness:
       failing: 4
       passing: 18
