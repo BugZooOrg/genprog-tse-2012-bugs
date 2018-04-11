@@ -1,0 +1,29 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:atris
+    file: Dockerfile
+    context: .
+
+bugs:
+  - name: tse2012:atris
+    dataset: tse2012
+    program: atris
+    image: squareslab/tse2012:atris
+    languages:
+    - c
+    source-location: /experiment/source
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment
+      command: ./compile.sh
+      command_with_instrumentation: ./compile.sh --coverage
+      instrument:
+        - atris_comb.c
+    test-harness:
+      failing: 1
+      passing: 2
+      time-limit: 10
+      type: genprog
