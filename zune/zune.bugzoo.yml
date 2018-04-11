@@ -1,0 +1,27 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:zune
+
+bugs:
+  - name: tse2012:zune
+    dataset: tse2012
+    program: zune
+    image: squareslab/tse2012:zune
+    languages:
+    - c
+    source-location: /experiment/source
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment/source
+      command: gcc zune.c -o zune
+      command_with_instrumentation: gcc zune.c -o zune --coverage
+      # instrument:
+      #   - atris_comb.c
+    test-harness:
+      failing: 4
+      passing: 18
+      time-limit: 5
+      type: genprog
