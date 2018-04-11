@@ -17,13 +17,12 @@ bugs:
     compiler:
       time-limit: 20
       type: simple
-      context: /experiment
-      command: ./compile.sh
-      command_with_instrumentation: ./compile.sh --coverage
+      command: /experiment/compile.sh
+      command_with_instrumentation: /experiment/compile.sh --coverage
       instrument:
         - atris_comb.c
     test-harness:
       failing: 1
-      passing: 2
+      passing: 1
       time-limit: 10
       type: genprog

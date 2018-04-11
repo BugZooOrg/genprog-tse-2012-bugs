@@ -31,10 +31,9 @@ ADD test.sh /experiment
 ADD tests /experiment/tests
 RUN sudo chown -R docker /experiment
 
-RUN sudo ln -sf /bin/bash /bin/sh
-
-# generate the expected outputs for the positive test cases
+# generate the expected outputs for the positive test case
 RUN ./compile.sh \
  && (/bin/bash -c "source tests/env.good.sh && source/atris -h &> tests/p1.out" | exit 0) \
- && (/bin/bash -c "source tests/env.good.sh && source/atris &> tests/p2.out" | exit 0) \
  && rm source/atris
+
+# && (/bin/bash -c "source tests/env.good.sh && source/atris &> tests/p2.out" | exit 0) \
