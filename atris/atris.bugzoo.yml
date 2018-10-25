@@ -10,11 +10,12 @@ bugs:
     program: atris
     image: squareslab/tse2012:atris
     languages:
-    - c
+      - c
     source-location: /experiment/source
     compiler:
       time-limit: 20
       type: simple
+      context: /experiment
       command: /experiment/compile.sh
       command_with_instrumentation: /experiment/compile.sh --coverage
       instrument:
