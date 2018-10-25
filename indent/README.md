@@ -1,7 +1,7 @@
 indent 1.9.1
 ============
 
-Description: Unix source code processing utility. This benchmark and its test
+Unix source code processing utility. This benchmark and its test
 inputs are taken from Miller et al.'s work on fuzz testing.
 
 **Bug:** Infinite loop.
@@ -9,14 +9,9 @@ inputs are taken from Miller et al.'s work on fuzz testing.
 Files
 -----
 
-README.txt
-
 indent-1.9.1.tar.gz: original indent source code
 
 indent_comb.c: combined source code on which modify operates
-
-indent_comb.c-best.c: a repaired variant (seed=5, mut=0.06,
-indent_coverage.c: indent_comb.c instrumented for path information
 
 output.t1:
 output.t2:
