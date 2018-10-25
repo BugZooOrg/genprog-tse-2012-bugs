@@ -21,5 +21,5 @@ Files
   positive tests), the test script compares the output of the program for a given
   input against an expected output. For the test that fails on the buggy program
   (a.k.a. the negative test), the test harness executes the program with a fuzz
-  input and checks that the execution does not seg. fault. (Note that the
+  input and checks that the execution with code zero. (Note that the
   negative test does not perform any checking on the output of the program.)
