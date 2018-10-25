@@ -15,7 +15,7 @@ USER docker
 
 # install dependencies
 RUN sudo apt-get update \
- && sudo apt-get install -y --no-install-recommends gcc libc6-dev \
+ && sudo apt-get install -y --no-install-recommends gcc libc6-dev gcovr \
  && sudo apt-get clean \
  && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
