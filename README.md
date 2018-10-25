@@ -1,9 +1,19 @@
 # GenProg TSE 2012 Benchmark
 
+This repository provides [BugZoo](https://github.com/squaresLab/BugZoo)-compatible
+versions of the majority of the benchmarks used in the TSE 2012 GenProg paper.
+
+------------------------------------------------------------------------------
+
 **Author:** Claire Le Goues
+
 **Contact:** claire.legoues@gmail.com
+
 **Original:** July 6, 2010
+
 **Last Revision:** March 20, 2012
+
+------------------------------------------------------------------------------
 
 This README contains a trail-map for the reproduction of the genprog automatic
 program repair experiments for benchmarks evaluated in our TSE 2012
