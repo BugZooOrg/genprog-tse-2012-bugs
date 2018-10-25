@@ -15,11 +15,8 @@ Files:
 flex-2.5.4a.tar.gz: original uncombined flex source code.
 flex_comb.c: Combined source file; code to which modify is applied.
 
-output.t1:
-output.t2:
-output.t3:
-output.t4:
-output.t5: Reference output files.
+`outputs/*`: contains a reference output file that describes the expected
+output for each test (except for the failing test).
 
 `inputs/*`: contains an input file for each test, where each input file has
 the same name as the test.
