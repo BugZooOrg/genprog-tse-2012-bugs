@@ -3,8 +3,6 @@ version: "1.0"
 blueprints:
   - type: docker
     tag: squareslab/tse2012:atris
-    file: Dockerfile
-    context: .
 
 bugs:
   - name: tse2012:atris
