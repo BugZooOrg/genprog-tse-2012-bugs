@@ -14,8 +14,12 @@ bugs:
     source-location: /experiment/source
     compiler:
       time-limit: 20
-      type: configure-and-make
+      type: simple
       context: /experiment/source
+      command: make
+      command_clean: make clean
+      command_with_instrumentation: |
+        make CFLAGS="--coverage" LDFLAGS="--coverage"
     coverage:
       files-to-instrument:
         - main.c
