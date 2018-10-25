@@ -1,0 +1,28 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:flex
+
+bugs:
+  - name: tse2012:flex
+    dataset: tse2012
+    program: flex
+    image: squareslab/tse2012:flex
+    languages:
+    - c
+    source-location: /experiment
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment
+      command: gcc flex_comb.c -o gcd
+      command_with_instrumentation: gcc flex_comb.c -o flex --coverage
+    coverage:
+      files-to-instrument:
+        - flex_comb.c
+    test-harness:
+      failing: 1
+      passing: 5
+      time-limit: 5
+      type: genprog
