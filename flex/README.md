@@ -12,7 +12,6 @@ for your machine.
 
 Files:
 
-README.txt: this file
 flex-2.5.4a.tar.gz: original uncombined flex source code.
 flex_comb.c: Combined source file; code to which modify is applied.
 
@@ -22,12 +21,8 @@ output.t3:
 output.t4:
 output.t5: Reference output files.
 
-t1:
-t11:
-t2:
-t3:
-t4:
-t5: Test input files. t11 is the "bad" test.
+`inputs/*`: contains an input file for each test, where each input file has
+the same name as the test.
 
 `test.sh`: accepts the name of a test to be executed. Produces an exit code of
 `0` if the test passed, and a non-zero exit code if the test failed. For the
