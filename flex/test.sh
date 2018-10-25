@@ -4,7 +4,7 @@ test_id=$1
 here_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 inputs="${here_dir}/inputs"
 outputs="${here_dir}/outputs"
-executable="${here_dir}/flex"
+executable="${here_dir}/source/flex"
 
 case $test_id in
   p1) "${executable}" < "${inputs}/p1" |& diff "${outputs}/p1" - && exit 0;;

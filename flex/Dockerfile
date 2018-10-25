@@ -15,11 +15,21 @@ USER docker
 
 # install dependencies
 RUN sudo apt-get update \
- && sudo apt-get install -y --no-install-recommends gcc libc6-dev gcovr \
+ && sudo apt-get install -y --no-install-recommends \
+    gcc \
+    libc6-dev \
+    gcovr \
+    build-essential \
+    bison \
  && sudo apt-get clean \
  && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /experiment
 COPY . /experiment/
-RUN sudo chown -R docker . \
- && gcc -o flex flex_comb.c
+RUN sudo chown -R docker . /tmp \
+ && tar -xf flex-2.5.4a.tar.gz \
+ && rm flex-2.5.4a.tar.gz \
+ && mv flex-2.5.4 source \
+ && cd source \
+ && ./configure \
+ && make -j4
