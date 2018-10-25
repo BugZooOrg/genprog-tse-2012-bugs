@@ -29,10 +29,11 @@ t3:
 t4:
 t5: Test input files. t11 is the "bad" test.
 
-test-bad.sh: "bad test" script. Passes fuzz input t11 to the program under test
-and outputs "t11" to the output file if the program terminates and does not seg
-fault (create a core dump).
-
-test-good.sh: "good tests" script. Passes 5 other fuzz test inputs to the
-program under test and compares the result to the reference output. Writes a
-line per passed test to the passed-in output file.
+`test.sh`: accepts the name of a test to be executed. Produces an exit code of
+`0` if the test passed, and a non-zero exit code if the test failed. For the
+tests that pass on the original, buggy version of the program (a.k.a. the
+positive tests), the test script compares the output of the program for a given
+input against an expected output. For the test that fails on the buggy program
+(a.k.a. the negative test), the test harness executes the program with a fuzz
+input and checks that the execution does not seg. fault. (Note that the
+negative test does not perform any checking on the output of the program.)
