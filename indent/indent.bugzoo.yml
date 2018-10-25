@@ -1,0 +1,30 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:indent
+
+bugs:
+  - name: tse2012:indent
+    dataset: tse2012
+    program: flex
+    image: squareslab/tse2012:indent
+    languages:
+    - c
+    source-location: /experiment/source
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment/source
+      command: make
+      command_clean: make clean
+      command_with_instrumentation: |
+        make CFLAGS="-std=c90 --coverage" LDFLAGS="--coverage"
+    coverage:
+      files-to-instrument:
+        - main.c
+    test-harness:
+      failing: 1
+      passing: 5
+      time-limit: 5
+      type: genprog
