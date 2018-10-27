@@ -2,7 +2,7 @@
 test_id=$1
 here_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 test_dir="${here_dir}/test"
-executable="${here_dir}/source/uniq"
+executable="${here_dir}/uniq"
 
 case $test_id in
   p1) "${executable}" < p1 &> /dev/null && exit 0;;
