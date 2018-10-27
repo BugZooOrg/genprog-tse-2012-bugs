@@ -1,7 +1,7 @@
 #!/bin/bash
 test_id=$1
 here_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-inputs="${here_dir}/test"
+inputs="${here_dir}/inputs"
 executable="${here_dir}/uniq"
 
 case $test_id in

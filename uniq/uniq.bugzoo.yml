@@ -1,0 +1,30 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:uniq
+
+bugs:
+  - name: tse2012:uniq
+    dataset: tse2012
+    program: uniq
+    image: squareslab/tse2012:uniq
+    languages:
+    - c
+    source-location: /experiment/source
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment
+      command: gcc -o uniq uniq.c
+      command_clean: rm uniq
+      command_with_instrumentation: |
+        gcc -o uniq CFLAGS="-coverage" LDFLAGS="--coverage" uniq.c
+    coverage:
+      files-to-instrument:
+        - main.c
+    test-harness:
+      failing: 1
+      passing: 5
+      time-limit: 5
+      type: genprog
