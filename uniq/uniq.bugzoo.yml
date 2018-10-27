@@ -11,7 +11,7 @@ bugs:
     image: squareslab/tse2012:uniq
     languages:
     - c
-    source-location: /experiment/source
+    source-location: /experiment
     compiler:
       time-limit: 20
       type: simple
@@ -19,10 +19,10 @@ bugs:
       command: gcc -o uniq uniq.c
       command_clean: rm uniq
       command_with_instrumentation: |
-        gcc -o uniq CFLAGS="-coverage" LDFLAGS="--coverage" uniq.c
+        gcc --coverage -o uniq uniq.c
     coverage:
       files-to-instrument:
-        - main.c
+        - uniq.c
     test-harness:
       failing: 1
       passing: 5
