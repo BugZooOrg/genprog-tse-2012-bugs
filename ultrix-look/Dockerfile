@@ -19,6 +19,7 @@ RUN sudo apt-get update \
     gcc \
     libc6-dev \
     gcovr \
+ && sudo apt-get install --reinstall wamerican \
  && sudo apt-get clean \
  && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -26,3 +27,5 @@ WORKDIR /experiment
 COPY . /experiment/
 RUN sudo chown -R docker . /tmp \
  && gcc -o look look.c
+RUN sudo mkdir -p /usr/dict \
+ && sudo ln -s /usr/share/dict/words /usr/dict/words
