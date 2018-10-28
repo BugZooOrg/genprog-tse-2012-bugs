@@ -1,0 +1,30 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:ultrix-look
+
+bugs:
+  - name: tse2012:ultrix-look
+    dataset: tse2012
+    program: ultrix-look
+    image: squareslab/tse2012:ultrix-look
+    languages:
+    - c
+    source-location: /experiment
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment
+      command: gcc -o look look.c
+      command_clean: rm look
+      command_with_instrumentation: |
+        gcc --coverage -o look look.c
+    coverage:
+      files-to-instrument:
+        - look.c
+    test-harness:
+      failing: 1
+      passing: 5
+      time-limit: 5
+      type: genprog
