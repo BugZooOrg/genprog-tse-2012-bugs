@@ -12,6 +12,6 @@ case $test_id in
   p3) "${executable}" < "${inputs}/p3" |& diff "${outputs}/p3" - && exit 0;;
   p4) "${executable}" < "${inputs}/p4" |& diff "${outputs}/p4" - && exit 0;;
   p5) "${executable}" < "${inputs}/p5" |& diff "${outputs}/p5" - && exit 0;;
-  p5) "${executable}" < "${inputs}/n1" && exit 0;;
+  n1) "${executable}" < "${inputs}/n1" && exit 0;;
 esac
 exit 1
