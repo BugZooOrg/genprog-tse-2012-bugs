@@ -3,7 +3,7 @@ ulimit -c 8
 test_id=$1
 here_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 inputs="${here_dir}/inputs"
-executable="${here_dir}/deroff"
+executable="${here_dir}/look"
 
 case $test_id in
   p1) "${executable}" < "${inputs}/p1" && exit 0;;
