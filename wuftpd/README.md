@@ -31,13 +31,7 @@ MMV.
 Files
 -----
 
-README.txt: this file 
-
-ftp-command-1:
-ftp-command-2:
-ftp-command-3:
-nc-command-4:
-nc-command-5: Input ftp commands; used by test-good.sh
+`tests/ftp-command-*`, `tests/nc-command-*`: input ftp commands; used by test-good.sh
 
 ftp-command-1.out:
 ftp-command-2.out:
@@ -46,18 +40,6 @@ nc-command-4.out:
 nc-command-5.out: Reference test case output.
 
 ftpd_comb.c: Reference combined source file.
-ftpd_comb.c-best.c: a repaired variant. seed=0, mut=0.00, gpf=0.03.
-ftpd_comb.c-reference.debug: output from a successful run of modify (seed 0,
-mut-0.00, gpf=0.03)
-ftpd_comb.c-baseline.c:
-
-ftpd_comb.c.ht:
-ftpd_comb.c.ast: binary data needed by modify, information about
-program statements
-
-ftpd_comb.c.goodpath:
-ftpd_comb.c.path: a "good path" and a "bad path". Required by modify. 
-
 
 test-bad.sh
 test-good.sh:  "good tests" script. Performs 5 simple ftp commands against a
