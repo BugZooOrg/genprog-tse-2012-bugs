@@ -19,10 +19,7 @@ Notes
 4. In general this one has given some trouble in the past, mostly due to
    default ftpd configuration on various machines; we have succeeded on various
    flavors of Fedora, but good luck to you.  
-5. Patch: the patch disables verbose debugging output, but does not otherwise
-   limit functionality. 
-6. Requires limit60.
-7. The exploit is explored by a wuftpd-god, a program that dynamically probes a
+5. The exploit is explored by a wuftpd-god, a program that dynamically probes a
    running instance of wuftpd to craft an attack string.  It sometimes gives up. 
 
 Files
@@ -35,8 +32,6 @@ ftp-command-2.out:
 ftp-command-3.out:
 nc-command-4.out:
 nc-command-5.out: Reference test case output.
-
-ftpd_comb.c: Reference combined source file.
 
 test-bad.sh
 test-good.sh:  "good tests" script. Performs 5 simple ftp commands against a
