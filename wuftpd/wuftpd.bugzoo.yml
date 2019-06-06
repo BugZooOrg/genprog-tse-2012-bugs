@@ -1,0 +1,28 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:wuftpd
+
+bugs:
+  - name: tse2012:wuftpd
+    dataset: tse2012
+    program: wuftpd
+    image: squareslab/tse2012:wuftpd
+    languages:
+    - c
+    source-location: /experiment/src
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment/src
+      command: make
+      command_with_instrumentation: gcc gcd.c -o gcd --coverage
+    coverage:
+      files-to-instrument:
+        - gcd.c
+    test-harness:
+      failing: 1
+      passing: 10
+      time-limit: 5
+      type: genprog
