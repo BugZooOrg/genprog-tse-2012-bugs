@@ -10,9 +10,6 @@ http://www.securityfocus.com/bid/1387/exploit — wuftpd-god.c
 Notes
 ------
 
-0. These instructions are incomplete, and this benchmark does not include a
-est-wuftpd.sh.  This will happen at some point.  You may still succeed, but
-MMV. 
 1. Requires a 32-bit architecture and the ability to open ports.
 2. We operate on the combined source code, in ftpd_comb.c.  Combine wuftpd into
    single C file (ftpd_comb.c), as explained in the top-level README.  The
