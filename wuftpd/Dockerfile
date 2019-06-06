@@ -11,6 +11,7 @@ RUN apt-get update \
       gcovr \
       ftp \
       netcat \
+      psmisc \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -28,3 +29,12 @@ RUN mv wu-ftpd-2.6.0 src \
  && rm -rf /tmp/*
 
 COPY test-good.sh .
+COPY tests /experiment/tests
+
+# create a test user
+RUN apt-get update \
+ && apt-get install -y openssl \
+ && useradd repair -s /bin/bash --create-home -p "$(openssl passwd -1 pass)" \
+ && echo "repair" > /etc/ftpusers \
+ && echo "root" >> /etc/ftpusers
+USER repair
