@@ -1,0 +1,11 @@
+--- Makefile.in.backup	2019-06-06 15:08:12.933170643 +0000
++++ Makefile.in	2019-06-06 15:08:25.703611729 +0000
+@@ -40,7 +40,7 @@
+ all: privatepw
+ 
+ privatepw:   privatepw.c ../../src/COPYRIGHT.c vers.c
+-	$(CC) $(CFLAGS) -L../../support $(LIBS) -o $@ privatepw.c ../../src/COPYRIGHT.c vers.c 
++	$(CC) $(CFLAGS) -o $@ privatepw.c ../../src/COPYRIGHT.c vers.c -L../../support $(LIBS)
+ 
+ install: $(BINDIR)/privatepw $(MANDIR)/privatepw.8
+ 
