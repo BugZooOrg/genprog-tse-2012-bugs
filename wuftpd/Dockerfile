@@ -9,6 +9,8 @@ RUN apt-get update \
       vim \
       libc6-dev \
       gcovr \
+      ftp \
+      netcat \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -24,3 +26,5 @@ RUN mv wu-ftpd-2.6.0 src \
  && ./configure \
  && make \
  && rm -rf /tmp/*
+
+COPY test-good.sh .
