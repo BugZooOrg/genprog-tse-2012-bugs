@@ -12,6 +12,7 @@ RUN apt-get update \
       ftp \
       netcat \
       psmisc \
+      man \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -24,17 +25,13 @@ RUN mv wu-ftpd-2.6.0 src \
  && cd src \
  && (cd src && patch -p0 < /tmp/ftpcmd.y.patch) \
  && (cd util/privatepw && patch -p0 < /tmp/Makefile.in.patch) \
+ && mkdir -p /usr/man/man1 \
+ && mkdir -p /usr/man/man5 \
+ && mkdir -p /usr/man/man8 \
  && ./configure \
  && make \
+ && make all \
  && rm -rf /tmp/*
 
 COPY test-good.sh .
 COPY tests /experiment/tests
-
-# create a test user
-RUN apt-get update \
- && apt-get install -y openssl \
- && useradd repair -s /bin/bash --create-home -p "$(openssl passwd -1 pass)" \
- && echo "repair" > /etc/ftpusers \
- && echo "root" >> /etc/ftpusers
-USER repair
