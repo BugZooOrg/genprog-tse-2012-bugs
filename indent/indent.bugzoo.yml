@@ -16,13 +16,13 @@ bugs:
       time-limit: 20
       type: simple
       context: /experiment/source
-      command: make
+      command: make CFLAGS="-std=c90"
       command_clean: make clean
       command_with_instrumentation: |
         make CFLAGS="-std=c90 --coverage" LDFLAGS="--coverage"
     coverage:
       files-to-instrument:
-        - main.c
+        - indent.c
     test-harness:
       failing: 1
       passing: 5
