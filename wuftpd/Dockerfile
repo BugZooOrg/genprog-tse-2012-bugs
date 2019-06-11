@@ -28,10 +28,14 @@ RUN mv wu-ftpd-2.6.0 src \
  && mkdir -p /usr/man/man1 \
  && mkdir -p /usr/man/man5 \
  && mkdir -p /usr/man/man8 \
- && ./configure --enable-anonymous \
+ && ./configure --enable-anonymous --enable-crackers \
  && make \
  && make all \
  && rm -rf /tmp/*
 
 COPY test-good.sh .
 COPY tests /experiment/tests
+
+RUN mkdir /var/ftp \
+ && useradd -d /var/ftp -s /dev/null ftp \
+ && addgroup ftp ftp
