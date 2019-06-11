@@ -28,7 +28,7 @@ RUN mv wu-ftpd-2.6.0 src \
  && mkdir -p /usr/man/man1 \
  && mkdir -p /usr/man/man5 \
  && mkdir -p /usr/man/man8 \
- && ./configure \
+ && ./configure --enable-anonymous \
  && make \
  && make all \
  && rm -rf /tmp/*
