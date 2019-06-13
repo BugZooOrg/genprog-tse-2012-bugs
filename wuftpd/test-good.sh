@@ -13,9 +13,9 @@ sleep 3s
 
 # execute the test
 case $TEST in
-  p1) ftp -v -in localhost $PORT < "${TEST_DIR}/ftp-command-1" |& tail -n+3;;
-  p2) ftp -v -in localhost $PORT < "${TEST_DIR}/ftp-command-2" |& tail -n+3;;
-  p3) ftp -v -in localhost $PORT < "${TEST_DIR}/ftp-command-3" |& tail -n+3;;
+  p1) ftp -pv -in localhost $PORT < "${TEST_DIR}/ftp-command-1" |& tail -n+3;;
+  p2) ftp -pv -in localhost $PORT < "${TEST_DIR}/ftp-command-2" |& tail -n+3;;
+  p3) ftp -pv -in localhost $PORT < "${TEST_DIR}/ftp-command-3" |& tail -n+3;;
   *)  echo "ERROR: unknown test ($1)"
 esac
 
