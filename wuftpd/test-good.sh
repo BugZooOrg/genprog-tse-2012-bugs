@@ -1,15 +1,23 @@
-#!/bin/sh
+#!/bin/bash
 ulimit -t 5
 PROG=/experiment/src/bin/ftpd
 TEST_DIR=/experiment/tests
 PORT=8080
+TEST=$1
+PASSED=0
 
+# launch the server
 timeout 60 $PROG -s -p $PORT &
 PID=$!
 sleep 3s
 
-ftp -in localhost $PORT < "${TEST_DIR}/ftp-command-1" >& 1.out
-diff 1.out "${TEST_DIR}/ftp-command-1.out" && echo "ftp-1 passed"
+# execute the test
+case $TEST in
+  p1) ftp -v -in localhost $PORT < "${TEST_DIR}/ftp-command-1" |& tail -n+3;;
+  p2) ftp -v -in localhost $PORT < "${TEST_DIR}/ftp-command-2" |& tail -n+3;;
+  p3) ftp -v -in localhost $PORT < "${TEST_DIR}/ftp-command-3" |& tail -n+3;;
+  *)  echo "ERROR: unknown test ($1)"
+esac
 
 # ftp -in localhost $PORT < "${TEST_DIR}/ftp-command-2" >& 2.out
 # diff 2.out "${TEST_DIR}/ftp-command-2.out" && echo "ftp-2 passed"
@@ -25,9 +33,11 @@ diff 1.out "${TEST_DIR}/ftp-command-1.out" && echo "ftp-1 passed"
 # nc localhost $PORT < "${TEST_DIR}/nc-command-5" | grep -v 220 >& 5.out
 # diff 5.out "${TEST_DIR}/nc-command-5.out" && echo "nc-5"
 
-kill -9 $PID
-killall $PROG
-killall -9 $PROG
+# ensure the server is killed
+kill -9 $PID &> /dev/null
+killall $PROG &> /dev/null
+killall -9 $PROG &> /dev/null
 wait
 
-exit 0
+# report the result
+exit $PASSED
