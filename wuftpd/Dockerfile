@@ -38,4 +38,6 @@ COPY tests /experiment/tests
 
 RUN mkdir /var/ftp \
  && useradd -d /var/ftp -s /dev/null ftp \
- && addgroup ftp ftp
+ && addgroup ftp ftp \
+ && chown 755 /var/ftp \
+ && chown ftp /var/ftp
