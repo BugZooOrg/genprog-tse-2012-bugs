@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 # create docker user
 RUN apt-get update \
- && apt-get install --no-install-recommends -y sudo \
+ && apt-get install --no-install-recommends -y sudo patch \
  && useradd -ms /bin/bash docker \
  && echo 'docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
  && adduser docker sudo \
@@ -21,6 +21,8 @@ RUN sudo dpkg --add-architecture i386 \
       libsdl1.2-dev:i386 \
       libc6-dev:i386 \
       libsdl-ttf2.0-dev:i386 \
+      python-pip \
+ && pip install gcovr \
  && sudo apt-get clean \
  && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -37,3 +39,6 @@ RUN ./compile.sh \
  && rm source/atris
 
 # && (/bin/bash -c "source tests/env.good.sh && source/atris &> tests/p2.out" | exit 0) \
+
+ENV HOME /home/docker
+ENV PATH "${PATH}:${HOME}/.local/bin"

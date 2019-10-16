@@ -6,6 +6,7 @@ RUN apt-get update \
       bison \
       byacc \
       gcc \
+      patch \
       vim \
       libc6-dev \
       gcovr \

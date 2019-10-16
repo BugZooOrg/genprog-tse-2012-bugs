@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 # create docker user
 RUN apt-get update \
- && apt-get install --no-install-recommends -y sudo \
+ && apt-get install --no-install-recommends -y sudo patch \
  && useradd -ms /bin/bash docker \
  && echo 'docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers \
  && adduser docker sudo \
