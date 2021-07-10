@@ -1,0 +1,30 @@
+version: "1.0"
+
+blueprints:
+  - type: docker
+    tag: squareslab/tse2012:deroff
+
+bugs:
+  - name: tse2012:deroff
+    dataset: tse2012
+    program: deroff
+    image: squareslab/tse2012:deroff
+    languages:
+    - c
+    source-location: /experiment
+    compiler:
+      time-limit: 20
+      type: simple
+      context: /experiment
+      command: gcc -o deroff deroff.c
+      command_clean: rm deroff
+      command_with_instrumentation: |
+        gcc --coverage -o deroff deroff.c
+    coverage:
+      files-to-instrument:
+        - deroff.c
+    test-harness:
+      failing: 1
+      passing: 5
+      time-limit: 5
+      type: genprog
